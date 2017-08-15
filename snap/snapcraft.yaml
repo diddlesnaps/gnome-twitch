@@ -15,6 +15,12 @@ icon: data/icons/com.vinszent.GnomeTwitch.svg
 grade: devel
 confinement: strict
 
+slots:
+  dbus-gnome-twitch:
+    interface: dbus
+    bus: session
+    name: com.vinszent.GnomeTwitch
+
 plugs:
   gnome-3-24-platform:
     interface: content
@@ -42,7 +48,7 @@ parts:
       apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 399B698EEA9EF163B6F9A0F62CC98497A1231595
       apt update
       apt upgrade -yy
-  
+
   gstreamer-launch:
     plugin: dump
     source: snap-files
