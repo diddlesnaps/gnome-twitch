@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# The environment: block in snapcraft.yaml appears to have no effect
+# on generated command wrapper, so we're overriding here instead.
+
+if [ "$SNAP_ARCH" == "amd64" ]; then
+  ARCH="x86_64-linux-gnu"
+elif [ "$SNAP_ARCH" == "armhf" ]; then
+  ARCH="arm-linux-gnueabihf"
+elif [ "$SNAP_ARCH" == "arm64" ]; then
+  ARCH="aarch64-linux-gnu"
+else
+  ARCH="$SNAP_ARCH-linux-gnu"
+fi
+
+# Custom-compiled GStreamer paths
+export GST_PLUGIN_PATH=$SNAP/usr/lib/gstreamer-1.0
+export GST_PLUGIN_SYSTEM_PATH=$SNAP/usr/lib/gstreamer-1.0
+export GST_PLUGIN_SCANNER=$SNAP/usr/libexec/gstreamer-1.0/gst-plugin-scanner
+
+# chainload the actual executable
+exec "$@"
