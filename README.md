@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="data/icons/hicolor/512x512/apps/com.vinsent.GnomeTwitch.png" alt="Gnome Twitch">
+  <img src="data/icons/hicolor/256x256/apps/com.vinszent.GnomeTwitch.png" alt="Gnome Twitch">
   <br />
   Gnome Twitch
 </h1>
@@ -26,7 +26,7 @@ distributions.</p>
 
 ## Remaining tasks
 
-Snapcrafters ([join us](https://forum.snapcraft.io/t/join-snapcrafters/1325)) 
+Snapcrafters ([join us](https://forum.snapcraft.io/t/join-snapcrafters/1325))
 are working to land snap install documentation and
 the [snapcraft.yaml](https://github.com/snapcrafters/fork-and-rename-me/blob/master/snap/snapcraft.yaml)
 upstream so Gnome Twitch can authoritatively publish future releases.
@@ -52,7 +52,7 @@ upstream so Gnome Twitch can authoritatively publish future releases.
   - [ ] Post an announcement in the [Snapcraft Forum](https://forum.snapcraft.io) - [link]()
   - [ ] Submit a pull request or patch upstream that adds snap install documentation - [link]()
   - [ ] Submit a pull request or patch upstream that adds the `snapcraft.yaml` and any required assets/launchers - [link]()
-  - [ ] Add upstream contact information to the `README.md`  
+  - [ ] Add upstream contact information to the `README.md`
   - If upstream accept the PR:
     - [ ] Request upstream create a Snap store account
     - [ ] Contact the Snap Advocacy team to request the snap be transferred to upstream
