@@ -17,6 +17,7 @@ distributions.</p>
 
     sudo apt install snapd-xdg-open
     sudo snap install gnome-twitch --beta
+    sudo snap install gnome-3-24
     sudo snap connect gnome-twitch:gnome-3-24-platform gnome-3-24:gnome-3-24-platform
 
 ([Don't have snapd installed?](https://snapcraft.io/docs/core/install))
