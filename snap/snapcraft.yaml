@@ -427,6 +427,7 @@ parts:
       - libsoup2.4-dev
       - libwebkit2gtk-4.0-dev
       - python3-pip
+      - python3-setuptools
     stage-packages:
       - libpeas-1.0-0
     after:
