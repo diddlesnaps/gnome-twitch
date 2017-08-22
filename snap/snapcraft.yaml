@@ -428,6 +428,7 @@ parts:
       - libwebkit2gtk-4.0-dev
       - python3-pip
       - python3-setuptools
+      - python3-wheel
     stage-packages:
       - libpeas-1.0-0
     after:
