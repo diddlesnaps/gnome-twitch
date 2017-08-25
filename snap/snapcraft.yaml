@@ -41,11 +41,11 @@ apps:
       - x11
 
 parts:
-  prepare:
+  gnome-platform:
     plugin: nil
     prepare: |
       echo "deb http://ppa.launchpad.net/ubuntu-desktop/gnome-3-24/ubuntu xenial main" | tee /etc/apt/sources.list.d/gnome-3-24.list
-      apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 399B698EEA9EF163B6F9A0F62CC98497A1231595
+      apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 399B698EEA9EF163B6F9A0F62CC98497A1231595
       apt update
       apt upgrade -yy
 
@@ -108,7 +108,7 @@ parts:
       - liborc-0.4-dev
     stage-packages:
       - liborc-0.4-0
-    after: [libopenh264-library, prepare]
+    after: [libopenh264-library, gnome-platform]
     prime:
       - -usr/bin
       - -usr/include
@@ -128,7 +128,7 @@ parts:
       - --prefix=/usr
     build-packages: [libasound2-dev, libcairo2-dev, libpulse-dev]
     stage-packages: [libpulse0]
-    after: [gstreamer, prepare]
+    after: [gstreamer, gnome-platform]
     prime:
       - -usr/bin
       - -usr/include
@@ -163,7 +163,7 @@ parts:
       - libgnutls30
       - liborc-0.4-0
       - libpulse0
-    after: [gstreamer, gst-plugins-base, libopenh264-library, prepare]
+    after: [gstreamer, gst-plugins-base, libopenh264-library, gnome-platform]
     prime:
       - -usr/lib/gcc
       - -usr/share/doc
@@ -239,7 +239,7 @@ parts:
     stage-packages:
       - liborc-0.4-0
       - libpulse0
-    after: [gstreamer, gst-plugins-base, libopenh264-library, prepare]
+    after: [gstreamer, gst-plugins-base, libopenh264-library, gnome-platform]
     prime:
       - -usr/lib/gcc
       - -usr/share/doc
@@ -400,7 +400,7 @@ parts:
     stage-packages:
       - liborc-0.4-0
       - libpulse0
-    after: [gstreamer, gst-plugins-base, libopenh264-library, prepare]
+    after: [gstreamer, gst-plugins-base, libopenh264-library, gnome-platform]
     prime:
       - -usr/include
       - -usr/lib/gcc
@@ -412,7 +412,8 @@ parts:
   gnome-twitch:
     plugin: meson
     source: https://github.com/vinszent/gnome-twitch/archive/v0.4.1.tar.gz
-    prepare: pip3 install meson
+    prepare: |
+      pip3 install meson
     meson-parameters:
       - --buildtype=plain
       - --prefix=/snap/gnome-twitch/current/usr
@@ -433,13 +434,13 @@ parts:
       - libpeas-1.0-0
     after:
       - desktop-gnome-platform
+      - gnome-platform
       - gstreamer
       - gst-plugins-base
       - gst-plugins-good
       - gst-plugins-bad
       - gst-plugins-libav
       - libopenh264-helper
-      - prepare
     prime:
       - usr/bin/gnome-twitch
       - usr/lib/**/gnome-twitch
