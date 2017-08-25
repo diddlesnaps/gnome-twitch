@@ -423,6 +423,7 @@ parts:
     organize:
       snap/gnome-twitch/current/usr: usr
     build-packages:
+      - gettext
       - libjson-glib-dev
       - libpeas-dev
       - libsoup2.4-dev
