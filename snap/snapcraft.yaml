@@ -528,6 +528,7 @@ parts:
       - libopenh264-helper
     stage:
       - -usr/share/locale/**/gstreamer-1.0.mo
+      - -usr/share/locale/**/gst-plugins-*
     prime:
       - usr/bin/gnome-twitch
       - usr/lib/**/gnome-twitch
