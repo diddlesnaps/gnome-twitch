@@ -16,8 +16,8 @@ grade: devel
 confinement: strict
 
 architectures:
-- build on: amd64
-- build on: i386
+- build-on: amd64
+- build-on: i386
 
 slots:
   dbus-gnome-twitch:
