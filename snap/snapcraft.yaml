@@ -559,8 +559,7 @@ parts:
   gnome-twitch:
     plugin: meson
     source: https://github.com/vinszent/gnome-twitch.git
-    # source-tag: '0.4.1'
-    source-commit: '24635c4'
+    source-tag: 'v0.4.2'
     override-pull: |
       pip3 install meson
       snapcraftctl pull
