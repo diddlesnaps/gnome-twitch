@@ -182,6 +182,7 @@ parts:
     plugin: dump
     source: snap-files
     override-pull: |
+      snapcraftctl pull
       chmod +x gstreamer-launch
       chmod +x pulse-launch
     organize:
