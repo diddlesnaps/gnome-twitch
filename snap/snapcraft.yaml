@@ -50,6 +50,7 @@ apps:
 parts:
   gnome-platform:
     plugin: nil
+    source: snap-files # arbitrary to avoid "part has changed" errors
     override-pull: |
       echo "deb http://ppa.launchpad.net/ubuntu-desktop/gnome-3-26/ubuntu xenial main" | tee /etc/apt/sources.list.d/gnome-3-24.list
       apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 399B698EEA9EF163B6F9A0F62CC98497A1231595
