@@ -39,25 +39,26 @@ plugs:
     target: $SNAP/data-dir/sounds
     default-provider: gtk-common-themes:sounds-themes
 
-layout:
-  /usr/lib/x86_64-linux-gnu/webkit2gtk-4.0:
-    symlink: $SNAP/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0
-  /usr/lib/i386-linux-gnu/webkit2gtk-4.0:
-    symlink: $SNAP/usr/lib/i386-linux-gnu/webkit2gtk-4.0
-  /usr/lib/x86_64-linux-gnu/alsa-lib:
-    symlink: $SNAP/usr/lib/x86_64-linux-gnu/alsa-lib
-  /usr/lib/i386-linux-gnu/alsa-lib:
-    symlink: $SNAP/usr/lib/i386-linux-gnu/alsa-lib
-  /etc/alsa.conf:
-    symlink: $SNAP/etc/alsa.conf
-  # /usr/lib/arm-linux-gnueabihf/webkit2gtk-4.0:
-  #   symlink: $SNAP/usr/lib/arm-linux-gnueabihf/webkit2gtk-4.0
-  # /usr/lib/aarch64-linux-gnu/webkit2gtk-4.0:
-  #   symlink: $SNAP/usr/lib/aarch64-linux-gnu/webkit2gtk-4.0
-  # /usr/lib/powerpc-linux-gnu/webkit2gtk-4.0:
-  #   symlink: $SNAP/usr/lib/powerpc-linux-gnu/webkit2gtk-4.0
-  # /usr/lib/s390x-linux-gnu/webkit2gtk-4.0:
-  #   symlink: $SNAP/usr/lib/s390x-linux-gnu/webkit2gtk-4.0
+passthrough:
+  layout:
+    /usr/lib/x86_64-linux-gnu/webkit2gtk-4.0:
+      symlink: $SNAP/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0
+    /usr/lib/i386-linux-gnu/webkit2gtk-4.0:
+      symlink: $SNAP/usr/lib/i386-linux-gnu/webkit2gtk-4.0
+    /usr/lib/x86_64-linux-gnu/alsa-lib:
+      symlink: $SNAP/usr/lib/x86_64-linux-gnu/alsa-lib
+    /usr/lib/i386-linux-gnu/alsa-lib:
+      symlink: $SNAP/usr/lib/i386-linux-gnu/alsa-lib
+    /etc/alsa.conf:
+      symlink: $SNAP/etc/alsa.conf
+    # /usr/lib/arm-linux-gnueabihf/webkit2gtk-4.0:
+    #   symlink: $SNAP/usr/lib/arm-linux-gnueabihf/webkit2gtk-4.0
+    # /usr/lib/aarch64-linux-gnu/webkit2gtk-4.0:
+    #   symlink: $SNAP/usr/lib/aarch64-linux-gnu/webkit2gtk-4.0
+    # /usr/lib/powerpc-linux-gnu/webkit2gtk-4.0:
+    #   symlink: $SNAP/usr/lib/powerpc-linux-gnu/webkit2gtk-4.0
+    # /usr/lib/s390x-linux-gnu/webkit2gtk-4.0:
+    #   symlink: $SNAP/usr/lib/s390x-linux-gnu/webkit2gtk-4.0
 
 apps:
   gnome-twitch:
