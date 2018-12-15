@@ -11,7 +11,7 @@ description: |
   GNOME Twitch is packed with cool features and development is constantly
   on-going, bringing heaps of new stuff straight to you.
 
-grade: devel
+grade: stable
 confinement: strict
 base: core18
 
