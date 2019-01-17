@@ -176,6 +176,7 @@ parts:
     - python3-setuptools
     - python3-wheel
     stage-packages:
+    - gstreamer1.0-clutter-3.0
     - gstreamer1.0-gl
     - gstreamer1.0-gtk3
     - gstreamer1.0-libav
