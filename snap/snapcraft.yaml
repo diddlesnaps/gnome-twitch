@@ -25,50 +25,24 @@ slots:
     bus: session
     name: com.vinszent.GnomeTwitch
 
-plugs:
-  gtk-3-themes:
-    interface: content
-    target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes:gtk-3-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes:icon-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes:sounds-themes
-
-passthrough:
-  layout:
-    /usr/lib/x86_64-linux-gnu/webkit2gtk-4.0:
-      symlink: $SNAP/usr/lib/x86_64-linux-gnu/webkit2gtk-4.0
-    /usr/lib/i386-linux-gnu/webkit2gtk-4.0:
-      symlink: $SNAP/usr/lib/i386-linux-gnu/webkit2gtk-4.0
-    /usr/lib/x86_64-linux-gnu/alsa-lib:
-      symlink: $SNAP/usr/lib/x86_64-linux-gnu/alsa-lib
-    /usr/lib/i386-linux-gnu/alsa-lib:
-      symlink: $SNAP/usr/lib/i386-linux-gnu/alsa-lib
-    /etc/asound.conf:
-      symlink: $SNAP/etc/asound.conf
-    # /usr/lib/arm-linux-gnueabihf/webkit2gtk-4.0:
-    #   symlink: $SNAP/usr/lib/arm-linux-gnueabihf/webkit2gtk-4.0
-    # /usr/lib/aarch64-linux-gnu/webkit2gtk-4.0:
-    #   symlink: $SNAP/usr/lib/aarch64-linux-gnu/webkit2gtk-4.0
-    # /usr/lib/powerpc-linux-gnu/webkit2gtk-4.0:
-    #   symlink: $SNAP/usr/lib/powerpc-linux-gnu/webkit2gtk-4.0
-    # /usr/lib/s390x-linux-gnu/webkit2gtk-4.0:
-    #   symlink: $SNAP/usr/lib/s390x-linux-gnu/webkit2gtk-4.0
+layout:
+  /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
+    symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+  /etc/asound.conf:
+    symlink: $SNAP/etc/asound.conf
 
 apps:
   gnome-twitch:
-    command: |
-      desktop-launch samba-launch snapcraft-preload $SNAP/usr/bin/gnome-twitch
+    extensions: [gnome]
+    command-chain:
+    - bin/samba-launch
+    command: bin/snapcraft-preload $SNAP/usr/bin/gnome-twitch
     desktop: usr/share/applications/com.vinszent.GnomeTwitch.desktop
     plugs:
     - browser-support
     - desktop
     - gsettings
+    - home
     - network
     - opengl
     - pulseaudio
@@ -78,34 +52,6 @@ apps:
     - x11
 
 parts:
-  desktop-gtk3:
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    source-subdir: gtk
-    plugin: make
-    make-parameters: ["FLAVOR=gtk3"]
-    build-packages:
-    - build-essential
-    - libgtk-3-dev
-    stage-packages:
-    - libxkbcommon0  # XKB_CONFIG_ROOT
-    - ttf-ubuntu-font-family
-    - dmz-cursor-theme
-    - light-themes
-    - adwaita-icon-theme
-    - gnome-themes-standard
-    - shared-mime-info
-    - libgtk-3-0
-    - libgdk-pixbuf2.0-0
-    - libglib2.0-bin
-    - libgtk-3-bin
-    - unity-gtk3-module
-    - libappindicator3-1
-    - locales-all
-    - xdg-user-dirs
-    - ibus-gtk3
-    - libibus-1.0-5
-    - fcitx-frontend-gtk3
-
   alsa:
     plugin: nil
     source: https://github.com/diddledan/snapcraft-alsa.git
@@ -132,7 +78,7 @@ parts:
     override-pull: |
       cat > samba-launch <<EOF
       #!/bin/bash
-      export LD_LIBRARY_PATH="\$SNAP/usr/lib/\$SNAP_LAUNCHER_ARCH_TRIPLET/samba:\$LD_LIBRARY_PATH"
+      export LD_LIBRARY_PATH="\$SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/samba:\$LD_LIBRARY_PATH"
       exec "\$@"
       EOF
     override-build:
@@ -146,6 +92,7 @@ parts:
     - g++-multilib
 
   gnome-twitch:
+    after: [gnome-extension]
     plugin: meson
     source: https://github.com/vinszent/gnome-twitch.git
     source-tag: 'v0.4.2'
@@ -176,26 +123,15 @@ parts:
     - python3-setuptools
     - python3-wheel
     stage-packages:
+    - gstreamer1.0-clutter-3.0
     - gstreamer1.0-gl
     - gstreamer1.0-gtk3
     - gstreamer1.0-libav
+    - gstreamer1.0-plugins-bad
     - gstreamer1.0-plugins-base
     - gstreamer1.0-plugins-good
-    - gstreamer1.0-plugins-bad
-    - libcairo-gobject2
     - libclutter-gst-3.0-0
-    - libclutter-gtk-1.0-0
-    - libdb5.3
-    - libglib2.0-0
-    - libglu1-mesa
     - libgpm2
-    - libjson-glib-1.0-0
     - libmpv1
-    - libpeas-1.0-0
-    - libpulse0
     - libslang2
-    - libsoup2.4-1
-    - libwebkit2gtk-4.0-37
     - samba-libs
-    after:
-    - desktop-gtk3
