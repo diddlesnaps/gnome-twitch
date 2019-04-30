@@ -114,6 +114,12 @@ parts:
       EOF
     override-build: |
       install -m644 -D -t $SNAPCRAFT_PART_INSTALL/etc asound.conf
+    build-packages:
+    - libasound2-dev
+    stage-packages:
+    - libasound2
+    - libasound2-plugins
+    - libpulse0
     
   samba-launch:
     plugin: nil
