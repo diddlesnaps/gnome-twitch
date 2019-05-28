@@ -157,6 +157,7 @@ parts:
     stage-packages:
     - gstreamer1.0-clutter-3.0
     - gstreamer1.0-libav
+    - gstreamer1.0-plugins-good
     - gstreamer1.0-plugins-bad
     - libglu1-mesa
     - libgpm2
