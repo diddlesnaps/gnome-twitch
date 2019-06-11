@@ -39,7 +39,7 @@ apps:
       samba-launch snapcraft-preload $SNAP/usr/bin/gnome-twitch
     desktop: usr/share/applications/com.vinszent.GnomeTwitch.desktop
     extensions: [gnome-3-28]
-    adapter: none # todo: remove when this is default
+    adapter: full # todo: remove when this is default
     plugs:
     - browser-support
     - desktop
