@@ -25,24 +25,6 @@ slots:
     bus: session
     name: com.vinszent.GnomeTwitch
 
-plugs:
-  gtk-3-themes:
-    interface: content
-    target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes:gtk-3-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes:icon-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes:sounds-themes
-  gnome-3-28-1804:
-    interface: content
-    target: $SNAP/gnome-platform
-    default-provider: gnome-3-28-1804:gnome-3-28-1804
-
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
     symlink: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
@@ -54,8 +36,10 @@ layout:
 apps:
   gnome-twitch:
     command: |
-      desktop-launch samba-launch snapcraft-preload $SNAP/usr/bin/gnome-twitch
+      samba-launch snapcraft-preload $SNAP/usr/bin/gnome-twitch
     desktop: usr/share/applications/com.vinszent.GnomeTwitch.desktop
+    extensions: [gnome-3-28]
+    adapter: none # todo: remove when this is default
     plugs:
     - browser-support
     - desktop
@@ -69,17 +53,6 @@ apps:
     - x11
 
 parts:
-  desktop-gnome-platform:
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    source-subdir: gtk
-    plugin: make
-    make-parameters: ["FLAVOR=gtk3"]
-    build-packages:
-      - gcc
-    override-build: |
-      snapcraftctl build
-      mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
-
   alsa:
     plugin: nil
     source: https://github.com/diddledan/snapcraft-alsa.git
@@ -167,5 +140,3 @@ parts:
     - libmpv1
     - libslang2
     - samba-libs
-    after:
-    - desktop-gnome-platform
