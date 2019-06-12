@@ -27,16 +27,15 @@ slots:
 
 layout:
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0:
-    symlink: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
+    bind: $SNAP/gnome-platform/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/webkit2gtk-4.0
   /usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib:
-    symlink: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
+    bind: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/alsa-lib
   /etc/asound.conf:
-    symlink: $SNAP/etc/asound.conf
+    bind-file: $SNAP/etc/asound.conf
 
 apps:
   gnome-twitch:
-    command: |
-      samba-launch snapcraft-preload $SNAP/usr/bin/gnome-twitch
+    command: bin/samba-launch $SNAP/bin/snapcraft-preload $SNAP/usr/bin/gnome-twitch
     desktop: usr/share/applications/com.vinszent.GnomeTwitch.desktop
     extensions: [gnome-3-28]
     adapter: full # todo: remove when this is default
@@ -104,7 +103,7 @@ parts:
     override-pull: |
       pip3 install meson
       snapcraftctl pull
-      sed -i 's|^Icon=.*|Icon=${SNAP}/usr/share/icons/hicolor/512x512/apps/com.vinszent.GnomeTwitch.png|'  data/com.vinszent.GnomeTwitch.desktop.in
+      sed -i -E 's|^(Icon[^=]*)=.*|\1=/usr/share/icons/hicolor/512x512/apps/com.vinszent.GnomeTwitch.png|'  data/com.vinszent.GnomeTwitch.desktop.in
     meson-parameters:
     - --buildtype=release
     - --prefix=/usr
