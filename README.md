@@ -7,11 +7,7 @@
 <p align="center"><b>This is the snap for Gnome Twitch</b>, <i>"Enjoy Twitch on your GNU/Linux desktop"</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
 distributions.</p>
 
-<!-- Uncomment and modify this when you are provided a build status badge
-<p align="center">
-<a href="https://build.snapcraft.io/user/snapcrafters/fork-and-rename-me"><img src="https://build.snapcraft.io/badge/snapcrafters/fork-and-rename-me.svg" alt="Snap Status"></a>
-</p>
--->
+[![Snap Status](https://build.snapcraft.io/badge/diddlesnaps/gnome-twitch.svg)](https://build.snapcraft.io/user/diddlesnaps/gnome-twitch)
 
 ## Install
 
@@ -24,7 +20,7 @@ distributions.</p>
 
 ![Gnome Twitch](snapcrafters-assets/screenshot.png?raw=true "Gnome Twitch")
 
-<p align="center">Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.png" align="top" width="24" /> with :gift_heart: by Snapcrafters</p>
+<p align="center">Published for <img src="https://raw.githubusercontent.com/anythingcodes/slack-emoji-for-techies/gh-pages/emoji/tux.png" align="top" width="24" /> with :gift_heart: by Snapcrafters</p>
 
 ## Remaining tasks
 
